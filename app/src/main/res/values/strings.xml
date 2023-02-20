@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DiceRoller</string>
     <string name="roll_dice">Roll</string>
+    <string name="click_count">회 클릭하였습니다.</string>
 </resources>

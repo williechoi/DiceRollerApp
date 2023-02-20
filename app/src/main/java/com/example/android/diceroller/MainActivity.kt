@@ -43,9 +43,18 @@ fun DiceRollerApp() {
 
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
+
+    // result represents the number of spots on the top of the dice after rolling it.
     var result by remember {
         mutableStateOf(1)
     }
+
+    // count stores the number of clicks an user made
+    var count by remember {
+        mutableStateOf(0)
+    }
+
+    // the value of result (integer) determines which image to show.
     val imageResource = when (result) {
         1 -> R.drawable.dice_1
         2 -> R.drawable.dice_2
@@ -54,14 +63,22 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         5 -> R.drawable.dice_5
         else -> R.drawable.dice_6
     }
+    
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(painter = painterResource(imageResource), contentDescription = result.toString())
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { result = (1..6).random() }) {
+        Button(onClick = {
+            result = (1..6).random()
+            count++
+        }) {
             Text(text = stringResource(R.string.roll_dice))
         }
+        Spacer(modifier=Modifier.height(16.dp))
+        Text(
+            text=count.toString() + stringResource(R.string.click_count)
+        )
     }
 }
