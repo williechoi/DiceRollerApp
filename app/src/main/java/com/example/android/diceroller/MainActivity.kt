@@ -77,7 +77,7 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         Image(painter = painterResource(imageResource), contentDescription = result.toString())
         Spacer(modifier = Modifier.height(16.dp))
         Button(colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color.Magenta,
+            backgroundColor = Color(0x50, 0xAA, 0x50, 0x77),
             contentColor = Color.White
         ),
             onClick = {
