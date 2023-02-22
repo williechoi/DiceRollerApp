@@ -4,16 +4,15 @@ import android.graphics.Paint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -71,21 +70,25 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text=stringResource(R.string.app_title),
-            fontSize= 30.sp
+            text = stringResource(R.string.app_title),
+            fontSize = 30.sp
         )
-        Spacer(modifier=Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Image(painter = painterResource(imageResource), contentDescription = result.toString())
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {
-            result = (1..6).random()
-            count++
-        }) {
+        Button(colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.Magenta,
+            contentColor = Color.White
+        ),
+            onClick = {
+                result = (1..6).random()
+                count++
+            }) {
             Text(text = stringResource(R.string.roll_dice))
         }
-        Spacer(modifier=Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text=count.toString() + stringResource(R.string.click_count)
+            text = count.toString() + stringResource(R.string.click_count)
         )
     }
 }
